@@ -22,4 +22,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.mainpage, name = "mainpage"),
     path('second/', views.secondpage, name = "secondpage"),
+    # app의 views.py에서 넘어옴
+    # 새로 만든 views.py의 new함수와 create 함수 연결 (url만들기)
+    path('new/', views.new, name="new"),
+    path('create/', views.create, name="create"),
 ]

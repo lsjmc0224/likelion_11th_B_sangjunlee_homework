@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-import os
+import os # os불러오기
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -57,6 +57,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'likelion_11th_B_sangjunlee_homework', 'templates')],
+        # 위 경로를 추가해 주어야 django가 템플릿을 제대로 찾을 수 있음.
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,5 +124,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Static_root를 지정해서 모든 static file들을 한곳에 모아주기
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'likelion_11th_B_sangjunlee_homework', 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')

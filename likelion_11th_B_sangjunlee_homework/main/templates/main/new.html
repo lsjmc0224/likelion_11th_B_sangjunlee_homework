@@ -1,0 +1,19 @@
+<!-- 새로운 게시물을 작성하는 템플릿 없던 녀석이니 새로 생성 -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- 위에건 중복되는 줄 base를 따른다는 뜻 -->
+
+<form action="{%url 'create'%}" method="POST"> <!-- 입력값은 create url로 보내주기 -->
+    <!-- 인터넷 사용자의 의지와 관계없이 공격자(해킹범)이 의도하는 행위를 웹사이트에 요청하게 만드는 공격 -->
+    {%csrf_token%} 
+    <!-- POST 방식 사용 시 값이 매번 변경되는 토큰을 발급해 CSRF 방어 -->
+    <p>제목 : <input type = "text" name = "title"></p> 
+    <p>작성자 : <input type="text" name = "writer"></p>
+    <p>내용 : <textarea type="text" name = "body" id="" cols="30" rows="10"></textarea></p>
+    <button type="submit">제출</button>
+</form>
+
+{% endblock %}
+<!-- block content 부터 여기까지만 새로이 추가되는 줄 -->

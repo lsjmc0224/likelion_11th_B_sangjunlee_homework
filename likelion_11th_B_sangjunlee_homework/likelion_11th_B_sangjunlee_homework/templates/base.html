@@ -1,3 +1,4 @@
+<!-- 반복되는 부분 -->
 <!doctype html>
 {% load static %} 
 
@@ -12,8 +13,9 @@
     <title>dgu_likelion11th</title>
 </head>
 <body>  
-    {% include 'shared/_navbar.html' %}
+    {% include 'shared/_navbar.html' %} <!-- navbar 파일 포함-->
 
+    <!-- 밑에 두개를 넣어서 페이지마다 base.html에는 없는 코드 넣기-->
     {% block content %} 
 
     {% endblock %} 
