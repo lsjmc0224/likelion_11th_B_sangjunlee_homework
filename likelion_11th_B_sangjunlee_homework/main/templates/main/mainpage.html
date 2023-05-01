@@ -1,6 +1,7 @@
 {% extends 'base.html' %} 
 {% load static %} 
 {% block content %} 
+
 <h1>내 사진첩</h1>
 <div class="container">
     <img src = "{% static 'images/sangjunlee1.jpg' %}" style = "width : 300px;">
@@ -15,5 +16,29 @@
     <p>이상준의 이모지</p>
 </div>
 
+<!-- vews.py blog함수부분에서 넘어옴 -->
+<h1>글 목록</h1>
+
+<!-- {{blogs}} -->
+<div>
+    <!-- for 문을 이용해 받아온 blogs에서 하나씩 띄우기, 변수 blog에 하나씩 blogs의 값이 들어감 -->
+    {% for blog in blogs %}
+    <div>
+        <h3>{{blog.title}}</h3>
+        {{blog.writer}}<br>
+        {{blog.summary}} <!-- 처음에 body였다가 summary 생성 후 일부만 보이게 함 -->
+        <!-- views.py detail함수에서 넘어옴 -->
+        <a href = "{%url 'detail' blog.id %}">...자세히</a> <!-- detail 함수를 실행시키면서 blog의 id값을 보내서 해당 blog의 내용들을 띄우기 -->
+        <br>
+    </div>
+    {% endfor %} <!-- for 문의 끝 -->
+</div>
+
+<!-- 
+앞에서 mainpage 함수의 return에 blogs라는 이름으로 Blogs의 모든 객체를 보내줌
+받아온 blogs를 띄우면 Blog 속의 모든 글들이 뜨게 되는 거다.
+사전형 객체 : {key : value} value에 내용을 담고 key로 담은 내용에 접근
+QuerySet : 데이터베이스에 전달받은 객체들의 모음(list) 
+-->
 
 {% endblock %}   

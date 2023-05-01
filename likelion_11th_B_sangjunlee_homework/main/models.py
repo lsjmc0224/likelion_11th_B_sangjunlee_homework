@@ -14,3 +14,8 @@ class Blog(models.Model):
     # Blog 내용이 호출되면 데이터의 title이 '대표값'으로 나오게 함. ??? 의것의 의도 ???
     def __str__(self):
         return self.title 
+    
+    # 내용이 너무 많으면 앞부분만 보이도록 body의 내용 앞부분을 자르기
+    def summary(self):
+        return self.body[:20] #body의 20번째 인덱스까지를 리턴
+    
