@@ -20,14 +20,14 @@ from main import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.mainpage, name = "mainpage"),
-    path('second/', views.secondpage, name = "secondpage"),
+    path('', views.mainpage, name="mainpage"),
+    path('second/', views.secondpage, name="secondpage"),
     # app의 views.py에서 넘어옴
     # 새로 만든 views.py의 new함수와 create 함수 연결 (url만들기)
     path('new/', views.new, name="new"),
     path('create/', views.create, name="create"),
     # mainpage.html detail부분에서 넘어옴
-    # url에 blog의 id 값을 넣어서 전달 -> 전달받은 id값을 통해 특정 게시글의 detail 띄우기
+    # url에 post의 id 값을 넣어서 전달 -> 전달받은 id값을 통해 특정 게시글의 detail 띄우기
     path('<int:id>', views.detail, name="detail"),
 ]
 

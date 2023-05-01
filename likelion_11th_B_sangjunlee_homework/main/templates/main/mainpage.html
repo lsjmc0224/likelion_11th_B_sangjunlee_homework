@@ -15,28 +15,29 @@
     <img src = "{% static 'images/이모지.png' %}" style = "width : 300px;">
     <p>이상준의 이모지</p>
 </div>
-
-<!-- vews.py blog함수부분에서 넘어옴 -->
+<br>
+<a href="{% url 'new' %}">글 쓰기</a>
+<!-- vews.py post 함수부분에서 넘어옴 -->
 <h1>글 목록</h1>
 
-<!-- {{blogs}} -->
+
 <div>
-    <!-- for 문을 이용해 받아온 blogs에서 하나씩 띄우기, 변수 blog에 하나씩 blogs의 값이 들어감 -->
-    {% for blog in blogs %}
+    <!-- for 문을 이용해 받아온 posts에서 하나씩 띄우기, 변수 post에 하나씩 posts의 값이 들어감 -->
+    {% for post in posts %}
     <div>
-        <h3>{{blog.title}}</h3>
-        {{blog.writer}}<br>
-        {{blog.summary}} <!-- 처음에 body였다가 summary 생성 후 일부만 보이게 함 -->
+        <h3>{{post.title}}</h3>
+        {{post.writer}}<br>
+        {{post.summary}} <!-- 처음에 body였다가 summary 생성 후 일부만 보이게 함 -->
         <!-- views.py detail함수에서 넘어옴 -->
-        <a href = "{%url 'detail' blog.id %}">...자세히</a> <!-- detail 함수를 실행시키면서 blog의 id값을 보내서 해당 blog의 내용들을 띄우기 -->
+        <a href = "{%url 'detail' post.id %}">...자세히</a> <!-- detail 함수를 실행시키면서 post의 id값을 보내서 해당 post의 내용들을 띄우기 -->
         <br>
     </div>
     {% endfor %} <!-- for 문의 끝 -->
 </div>
 
 <!-- 
-앞에서 mainpage 함수의 return에 blogs라는 이름으로 Blogs의 모든 객체를 보내줌
-받아온 blogs를 띄우면 Blog 속의 모든 글들이 뜨게 되는 거다.
+앞에서 mainpage 함수의 return에 posts라는 이름으로 Posts의 모든 객체를 보내줌
+받아온 posts를 띄우면 Post 속의 모든 글들이 뜨게 되는 거다.
 사전형 객체 : {key : value} value에 내용을 담고 key로 담은 내용에 접근
 QuerySet : 데이터베이스에 전달받은 객체들의 모음(list) 
 -->
