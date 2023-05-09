@@ -8,6 +8,11 @@ def delete(request, id):
     delete_post.delete()
     return redirect('main:mainpage')
 
+def pic_delete(request, id):
+    post_pic_delete = Post.objects.get(id=id)
+    post_pic_delete.image.delete()
+    return redirect('main:edit.html')
+
 def update(request, id):
     update_post = Post.objects.get(id=id)
     update_post.title = request.POST['title']
@@ -16,7 +21,7 @@ def update(request, id):
     update_post.body = request.POST['body']
     update_post.mood = request.POST['mood'] # 새 Post에 내 기분 정의
     update_post.weather = request.POST['weather'] # 새 Post에 오늘 날씨 정의
-    update_post.image = request.FILES.get('image')
+    update_post.image = request.FILES.get('image', update_post.image)
 
     update_post.save()
     return redirect('main:detail',update_post.id)
