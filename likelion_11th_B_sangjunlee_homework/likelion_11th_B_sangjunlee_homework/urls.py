@@ -15,19 +15,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from main import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.mainpage, name="mainpage"),
-    path('second/', views.secondpage, name="secondpage"),
-    # app의 views.py에서 넘어옴
-    # 새로 만든 views.py의 new함수와 create 함수 연결 (url만들기)
-    path('new/', views.new, name="new"),
-    path('create/', views.create, name="create"),
-    # mainpage.html detail부분에서 넘어옴
-    # url에 post의 id 값을 넣어서 전달 -> 전달받은 id값을 통해 특정 게시글의 detail 띄우기
-    path('<int:id>', views.detail, name="detail"),
-]
+    path('', include('main.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 

@@ -16,7 +16,7 @@
     <p>이상준의 이모지</p>
 </div>
 <br>
-<a href="{% url 'new' %}">글 쓰기</a>
+<a href="{% url 'main:new' %}">글 쓰기</a>
 <!-- vews.py post 함수부분에서 넘어옴 -->
 <h1>글 목록</h1>
 
@@ -29,7 +29,7 @@
         {{post.writer}}<br>
         {{post.summary}} <!-- 처음에 body였다가 summary 생성 후 일부만 보이게 함 -->
         <!-- views.py detail함수에서 넘어옴 -->
-        <a href = "{%url 'detail' post.id %}">...자세히</a> <!-- detail 함수를 실행시키면서 post의 id값을 보내서 해당 post의 내용들을 띄우기 -->
+        <a href = "{%url 'main:detail' post.id %}">...자세히</a> <!-- detail 함수를 실행시키면서 post의 id값을 보내서 해당 post의 내용들을 띄우기 -->
         <br>
     </div>
     {% endfor %} <!-- for 문의 끝 -->
