@@ -11,7 +11,7 @@ def delete(request, id):
 def pic_delete(request, id):
     post_pic_delete = Post.objects.get(id=id)
     post_pic_delete.image.delete()
-    return redirect('main:edit.html')
+    return redirect('main:edit',post_pic_delete.id)
 
 def update(request, id):
     update_post = Post.objects.get(id=id)

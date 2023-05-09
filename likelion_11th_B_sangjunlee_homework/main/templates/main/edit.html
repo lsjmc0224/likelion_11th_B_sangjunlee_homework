@@ -11,6 +11,7 @@
         <!--
         <p>사진 : <input type="file" name="image"></p>-->
         <p>사진 : {% if post.image %}<img src="{{ post.image.url }}" width="200" /><br />{% endif %}<input type="file" name="image"></p>
+        <a href = "{% url 'main:pic_delete' post.id %}">사진 삭제하기</a>
         <p>기분 : <input type="text" name = "mood" value="{{post.mood}}"></p>
         <p>날씨 : <input type = "text" name = "weather" value="{{post.weather}}"></p>
         <p>내용 : <textarea name="body" id="" cols="30" rows="10" >{{post.body}}</textarea></p>
