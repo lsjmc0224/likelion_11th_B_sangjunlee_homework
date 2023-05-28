@@ -7,9 +7,7 @@
     <form action="{% url 'main:update' post.id %}" method="POST" enctype="multipart/form-data">
         {%csrf_token%}
         <p>제목 : <input type="text" name="title" value="{{post.title}}"></p>
-        <p>작성자 : <input type="text" name="writer" value="{{post.writer}}"></p>
-        <!--
-        <p>사진 : <input type="file" name="image"></p>-->
+        <!--<p>사진 : <input type="file" name="image"></p>-->
         <p>사진 : {% if post.image %}<img src="{{ post.image.url }}" width="200" /><br />{% endif %}<input type="file" name="image"></p>
         <a href = "{% url 'main:pic_delete' post.id %}">사진 삭제하기</a>
         <p>기분 : <input type="text" name = "mood" value="{{post.mood}}"></p>

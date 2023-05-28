@@ -5,8 +5,9 @@ from main import views # main(자기 상위폴더)에서 views.py를 가져옴
 
 
 # models.py에서 Post class 불러오고 admin 사이트에 등록 (이래야 사이트에서 확인가능)
-from .models import Post
+from .models import Post, Comment
 admin.site.register(Post)
+admin.site.register(Comment)
 
 urlpatterns = [
     path('admin/', admin.site.urls), #어드민 url admin으로 생성

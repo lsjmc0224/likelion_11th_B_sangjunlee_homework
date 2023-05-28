@@ -16,8 +16,9 @@
     <p>이상준의 이모지</p>
 </div>
 <br>
+{% if user.is_authenticated %}
 <a href="{% url 'main:new' %}">글 쓰기</a>
-<!-- vews.py post 함수부분에서 넘어옴 -->
+{% endif %}
 <h1>글 목록</h1>
 
 
