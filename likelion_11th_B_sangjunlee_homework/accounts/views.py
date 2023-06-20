@@ -33,7 +33,7 @@ def signup(request):
                 password = request.POST['password']
                 )
             nickname = request.POST['nickname']
-            department = request.POST['password']
+            department = request.POST['department']
             email = request.POST['email']
 
             profile = Profile(user=user, nickname=nickname, department=department, email = email)

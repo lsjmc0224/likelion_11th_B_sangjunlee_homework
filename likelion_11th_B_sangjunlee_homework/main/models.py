@@ -11,6 +11,8 @@ class Post(models.Model): # 모델 class 명을 Blog에서 Post로 바꾸기
     pub_date = models.DateTimeField() # pub_date : 게시날짜
     body = models.TextField() # body : post의 body
     image = models.ImageField(upload_to="post/", blank=True, null=True)
+    like = models.ManyToManyField(User, related_name='likes', blank=True)
+    like_count = models.PositiveIntegerField(default=0)
 
     
     # 이후 termianl에 python manage.py makemigrations 입력 (앱 내에 migrations 폴더를 생성해 models.py의 변경사항을 저장)
