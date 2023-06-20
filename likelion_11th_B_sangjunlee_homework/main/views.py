@@ -87,3 +87,15 @@ def pic_delete(request, id):
     post_pic_delete = Post.objects.get(id=id)
     post_pic_delete.image.delete()
     return redirect('main:edit',post_pic_delete.id)
+#================================================================================================
+def likes(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    if request.user in post.like.all():
+        post.like.remove(request.user)
+        post.like_count -= 1
+        post.save()
+    else:
+        post.like.add(request.user)
+        post.like_count += 1
+        post.save()
+    return redirect('main:detail', post_id)
